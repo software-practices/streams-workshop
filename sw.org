@@ -5,6 +5,7 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+OPTIONS: reveal_mathjax:t
 #+OPTIONS: tex:t toc:nil
+#+EXPORT_FILE_NAME: dist/sw
   
 * Introduction
    Programming with streams is also called functional reactive programming
@@ -114,3 +115,5 @@
    2. Write a drawing application over a HTML5 Canvas. Store the current color
       and brush width in a property.
    3. Write a stock market tracker.
+
+   You can look at http://dangorst.github.io/frp-with-bacon/ for inspiration.
