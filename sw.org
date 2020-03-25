@@ -6,7 +6,7 @@
 #+OPTIONS: reveal_mathjax:t
 #+OPTIONS: tex:t toc:nil
 #+EXPORT_FILE_NAME: dist/sw
-  
+
 * Introduction
    Programming with streams is also called functional reactive programming
    (FRP). It is one (of many) ways of handling state in a way that is compatible
@@ -30,54 +30,19 @@
 * Explanation
 
    The key insight is that you can map changes of a property though time as a
-   list of these values. In Rx, a streaming library originally published by
-   Microsoft, there is a pair of interfaces called ~IObservable<T>~ and
-   ~IObserver<T>~:
-
-#+REVEAL: split
-
-   #+BEGIN_SRC csharp
-
-     //Defines a provider for push-based notification.
-     public interface IObservable<out T>
-     {
-         //Notifies the provider that an observer is to receive notifications.
-         IDisposable Subscribe(IObserver<T> observer);
-     }
-
-     //Provides a mechanism for receiving push-based notifications.
-     public interface IObserver<in T>
-     {
-         //Provides the observer with new data.
-         void OnNext(T value);
-
-         //Notifies the observer that the provider has experienced an error
-         //condition.
-         void OnError(Exception error);
-    
-         //Notifies the observer that the provider has finished sending push-based
-         //notifications.
-         void OnCompleted();
-     }
-
-   #+END_SRC
+   list of these values as a way to regain composability around event /streams/.
    
-#+REVEAL: split
-
-   Although these signatures relate streaming very well to event driven
-   approaches the paper from Conal Elliott (http://conal.net/papers/icfp97/)
-   focuses on what is needed to regain composability around event /streams/.
-   There is then two distinct concepts that arise (we will use the BaconJS
-   terminology from now on) ~Properties~ and ~EventStreams~. They are both
-   actually forms of the ~Observable~ in the sense that they can both be
-   subscribed to.
+   There are then two distinct concepts that arise (we will use the BaconJS
+   terminology from now on) ~Properties~ and ~EventStreams~.
 
 #+REVEAL: split
 
    In a ~property~, you can always ask: =What is property's value now?= or a
-   ~property~ is expected to hold a value at any given moment in time. An
-   ~eventStreams~ on the other hand does not hold on to values across time, they
-   are ephemeral and only send out signals (or events) as they are triggered.
+   ~property~ is expected to hold a value at any given moment in time. 
+
+   An ~eventStreams~ on the other hand does not hold on to values across time,
+   they are ephemeral and only send out signals (or events) as they are
+   triggered.
 
 #+REVEAL: split
 
@@ -104,9 +69,8 @@
    Starting point: https://jsfiddle.net/kryptt/y5fta1nc/31/
 #+ATTR_REVEAL: :frag (fade-in)
    1. Switch and light. 
-   2. Allow the switch to generate noise.
-   3. Ensure the bulb shuts down after 2 seconds of inactivity.
-   4. Turn the light on when the mouse enters the box and off when it leaves it.
+   2. Ensure the bulb shuts down after 2 seconds of inactivity.
+   3. Turn the light on when the mouse enters the box and off when it leaves it.
 
 * Exercises
    Pick one or more of:
@@ -117,3 +81,17 @@
    3. Write a stock market tracker.
 
    You can look at http://dangorst.github.io/frp-with-bacon/ for inspiration.
+
+* Results
+
+We held a workshop introducing /Functional Reactive Programming/ or programming
+with Streams during our Face 2 Face session the third week of January 2020. The
+workshop was made in reference to improving the locality of business logic for
+User Interface code at IGT. The subject was selected unanimously amongst polled
+individuals and was fully booked with 18 participants.
+
+We had a very fun session for which we received positive feedback. If you are
+interested in having this workshop with us please email David Terol. Thanks
+again Daan van der Munnik for helping us coordinate and prepare the first
+version of this workshop as well as for your feedback to improve it.
+  
